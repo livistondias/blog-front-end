@@ -1,0 +1,30 @@
+<div class="login-form">
+  <form [formGroup]="formLogin">
+    <h2 class="text-center">Log in</h2>
+    <div class="form-group">
+      <p class="error-login" [hidden]="hidden">
+        E-mail e/ou senha incorreto(s)
+      </p>
+      <mat-form-field appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input matInput type="text" placeholder="E-mail" autocomplete="off" formControlName="email" />
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error>Informe o E-mail</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" placeholder="Senha" autocomplete="off" formControlName="password" />
+        <mat-icon matSuffix>visibility</mat-icon>
+        <mat-error>Informe a Senha</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block" (click)="onLogin()" [disabled]="loading">Log in
+        <ngx-loading [show]="loading"></ngx-loading>
+      </button>
+    </div>
+  </form>
+  <p class="text-center"><span class="pseudolink" (click)="onRegister()">Criar conta</span></p>
+</div>

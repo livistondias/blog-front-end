@@ -1,0 +1,56 @@
+<div class="login-form">
+    <form [formGroup]="formRegister">
+        <h2 class="text-center">Registrar</h2>
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input matInput type="text" placeholder="Nome" autocomplete="off" formControlName="name" />
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>Informe o Nome</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <input matInput type="text" placeholder="E-mail" autocomplete="off" formControlName="email" />
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>Informe o E-mail</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Senha</mat-label>
+                <input matInput type="password" placeholder="Senha" autocomplete="off" formControlName="password" />
+                <mat-icon matSuffix>visibility</mat-icon>
+                <mat-error *ngIf="formRegister.get('password').hasError('strong')">
+                    Senha não atende os requisitos mínimos de segurança
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Confirme a Senha</mat-label>
+                <input matInput type="password" placeholder="Confirme a Senha" autocomplete="off"
+                    formControlName="confirmpassword" />
+                <mat-icon matSuffix>visibility</mat-icon>
+                <mat-error *ngIf="formRegister.get('confirmpassword').hasError('MatchPassword')">
+                    Senhas Diferentes
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-icon>info</mat-icon>
+            <span>
+                Use 8 ou mais caracteres com uma mistura de letras
+                maiúsculas,
+                minúsculas e números
+            </span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" (click)="onRegister()"
+                [disabled]="loading">Registrar
+                <ngx-loading [show]="loading"></ngx-loading>
+            </button>
+        </div>
+    </form>
+</div>
